@@ -1,0 +1,245 @@
+/* --------------------------------
+   Basic Setup & Body
+   --------------------------------
+*/
+
+*/body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    background-color: #0d1117; /* Dark navy/charcoal background */
+    color: #e6edf3;           /* Off-white text */
+    font-family: 'Inconsolata', 'Courier New', monospace;
+    font-size: 1.1rem; /* Base font size, e.g., ~17.6px */
+    line-height: 1.6;  /* Adds comfortable spacing between lines */
+}
+
+/* --------------------------------
+   Main Layout Container
+   --------------------------------
+*/
+
+/* This wrapper holds all content and defines the
+   main padding and max-width for the PC view. */
+.content-wrapper {
+    /* '15vh' = 15% of viewport height (top padding) */
+    /* 'auto' = centers the content horizontally if max-width is reached */
+    /* '10vh' = 10% of viewport height (bottom padding) */
+    /* '10vw' = 10% of viewport width (left/right padding) */
+    padding: 15vh 10vw 10vh 10vw;
+    
+    /* Sets a max-width so the text doesn't stretch too wide */
+    max-width: 800px; 
+}
+
+/* --------------------------------
+   Header / Intro Section
+   --------------------------------
+*/
+
+.intro-header p,
+.intro-header h1 {
+    margin: 0; /* Removes default margins */
+}
+
+.greeting {
+    font-size: 1.75rem; /* ~28px */
+    font-weight: 400;
+}
+
+.name {
+    font-size: 4.5rem; /* ~72px */
+    font-weight: 700;
+    font-style: italic;
+    margin: 10px 0; /* Adds space around the name */
+}
+
+.description {
+    font-size: 1.25rem; /* ~20px */
+    font-weight: 400;
+}
+
+/* --------------------------------
+   Separator Line
+   --------------------------------
+*/
+
+.separator {
+    border: none; /* Removes default 3D border */
+    border-top: 1px solid #e6edf3; /* Sets a 1px solid white line */
+    opacity: 0.6; /* Makes the line slightly less bright */
+    margin: 60px 0; /* Adds 60px of space above and below */
+}
+
+/* --------------------------------
+   Content Sections (About, Skills)
+   --------------------------------
+*/
+
+.about-section,
+.skills-section {
+    margin-bottom: 40px; /* Adds space between sections */
+}
+
+/* Shared style for "about me" and "education/skills" */
+.section-title {
+    font-size: 2.5rem; /* ~40px */
+    font-weight: 700;
+    color: #e6edf3; /* Ensures it's the bright off-white */
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Standard paragraph text within sections */
+.about-section p,
+.skills-section p {
+    margin-top: 0;
+    margin-bottom: 16px; /* Default paragraph spacing */
+    max-width: 70ch; /* Limits line length for readability */
+}
+
+/* --------------------------------
+   Skills List
+   --------------------------------
+*/
+
+.skills-list {
+    /* Removes default list-style (like 1., 2.) */
+    list-style-type: none; 
+    
+    /* Removes default browser padding on the list */
+    padding-left: 0; 
+    
+    /* Creates the custom "1.", "2." numbers */
+    counter-reset: skills-counter; 
+}
+
+.skills-list li {
+    /* Adds one to the counter for each list item */
+    counter-increment: skills-counter;
+    
+    /* Adds space between list items */
+    margin-bottom: 8px; 
+    
+    /* Aligns the custom number with the text */
+    position: relative;
+    padding-left: 35px; /* Creates space for the number */
+}
+
+/* This creates and styles the custom number */
+.skills-list li::before {
+    /* Use the counter value */
+    content: counter(skills-counter) "."; 
+    
+    font-weight: 700;
+    
+    /* Positions the number absolutely within the 'li' */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* --------------------------------
+   New: Projects Section
+   --------------------------------
+*/
+
+.projects-section {
+    /* Adds space above the projects area */
+    margin-top: 60px; 
+}
+
+.project-grid {
+    display: grid;
+    
+    /* Creates 3 equal-width columns */
+    grid-template-columns: repeat(3, 1fr); 
+    
+    /* Sets the gap between columns and rows */
+    column-gap: 30px;
+    row-gap: 40px;
+}
+
+
+/* NEW: Make the link a block element */
+.project-item a {
+    display: block; /* Makes the link fill the space */
+    text-decoration: none; /* Removes underline */
+}
+
+
+/* The project image/gif */
+.project-item img {
+    /* Makes the image fill its column */
+    width: 100%; 
+    
+    /* Uses a 16:9 aspect ratio */
+    aspect-ratio: 16 / 9; 
+    
+    /* Ensures the image scales nicely */
+    object-fit: cover; 
+    
+    /* Just in case your placeholder isn't white */
+    background-color: #ffffff; 
+    
+    /* Fixes potential layout gaps */
+    display: block; 
+    
+    /* NEW: Add a smooth transition for the hover effect */
+    transition: opacity 0.3s ease;
+}
+
+/* NEW: Add a hover effect to the image */
+.project-item a:hover img {
+    opacity: 0.8; /* Fades the image slightly on hover */
+}
+
+
+/* The caption text (e.g., "#1") */
+.project-caption {
+    font-size: 1rem; /* ~16px */
+    font-weight: 700;
+    margin: 0; /* Resets default paragraph margin */
+    
+    /* Adds space between image and caption */
+    margin-top: 10px; 
+}
+
+.contact-section {
+    /* Adds space above the contact area */
+    margin-top: 60px;
+}
+
+
+.contact-link {
+    display: flex; /* Aligns icon and text horizontally */
+    align-items: center; /* Aligns them vertically */
+    text-decoration: none; /* Removes link underline */
+    color: #e6edf3; /* Sets text color to match body */
+    margin-bottom: 25px; /* Adds space between links */
+    transition: opacity 0.3s ease; /* Adds hover effect */
+}
+
+.contact-link:hover {
+    opacity: 0.8; /* Fades link slightly on hover */
+}
+
+.contact-icon {
+    height: 32px; /* Sets a consistent icon height */
+    width: 32px;  /* Sets a consistent icon width */
+    object-fit: contain; /* Ensures icon scales properly */
+    margin-right: 15px; /* Adds space between icon and text */
+}
+
+/* This class inverts the black GitHub icon to make it white */
+.invert-icon {
+    filter: invert(1);
+}
+
+.contact-link span {
+    font-size: 1.25rem; /* Makes text slightly larger */
+    font-weight: 700; /* Makes text bold */
+}
